@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewAdapter: MessagesAdapter
     lateinit var viewManager: LinearLayoutManager
 
-    val messageViewModel: MessageViewModel by inject()
+    val insultViewModel: InsultViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewAdapter = MessagesAdapter(listOf())
         viewManager = LinearLayoutManager(this)
-        recyclerView = findViewById(R.id.messages_recycler_view)
+        recyclerView = findViewById(R.id.insults_recycler_view)
 
         recyclerView.apply {
             viewManager.stackFromEnd = true
@@ -33,40 +33,40 @@ class MainActivity : AppCompatActivity() {
             adapter = viewAdapter
         }
 
-        messageViewModel.messages.observe(this, Observer {
+        insultViewModel.messages.observe(this, Observer {
             viewAdapter.updateMessages(it!!)
             recyclerView.smoothScrollToPosition(viewAdapter.itemCount)
         })
 
         findViewById<Button>(R.id.generator_button).setOnClickListener {
-            messageViewModel.addMessage(Message(viewAdapter.itemCount + 1))
+            insultViewModel.addMessage(Insult(viewAdapter.itemCount + 1))
         }
         // set background to "stale" like 3 seconds later
-        // maybe viewholder can observe individual message?????
+        // maybe viewholder can observe individual insult?????
     }
 }
 
-class MessagesAdapter(var messages: List<Message>) : RecyclerView.Adapter<MessageViewHolder>() {
+class MessagesAdapter(var insults: List<Insult>) : RecyclerView.Adapter<MessageViewHolder>() {
 
-    override fun getItemCount(): Int = messages.size
+    override fun getItemCount(): Int = insults.size
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): MessageViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.message_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.insult_layout, parent, false)
         return MessageViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        holder.setMessageText(messages[position])
+        holder.setMessageText(insults[position])
     }
 
-    fun updateMessages(newMessages: List<Message>) {
-        messages = newMessages
+    fun updateMessages(newInsults: List<Insult>) {
+        insults = newInsults
         notifyDataSetChanged()
     }
 }
 
 class MessageViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-    fun setMessageText(message: Message) {
-        view.findViewById<TextView>(R.id.message_text).text = message.text
+    fun setMessageText(insult: Insult) {
+        view.findViewById<TextView>(R.id.insult_text).text = insult.text
     }
 }

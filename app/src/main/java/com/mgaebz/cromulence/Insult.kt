@@ -1,6 +1,6 @@
 package com.mgaebz.cromulence
 
-data class Message(
+data class Insult(
         val id: Int,
         val text: String = ShakesInsultGenerator.generate(),
         var stale: Boolean = false

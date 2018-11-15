@@ -1,4 +1,4 @@
-package com.mgaebz.livedataexample
+package com.mgaebz.cromulence
 
 import android.arch.lifecycle.MutableLiveData
 

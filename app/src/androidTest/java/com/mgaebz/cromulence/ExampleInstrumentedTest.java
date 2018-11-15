@@ -1,4 +1,4 @@
-package com.mgaebz.livedataexample;
+package com.mgaebz.cromulence;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

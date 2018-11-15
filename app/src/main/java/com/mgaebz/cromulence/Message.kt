@@ -1,4 +1,4 @@
-package com.mgaebz.livedataexample
+package com.mgaebz.cromulence
 
 data class Message(
         val id: Int,

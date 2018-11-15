@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/selected_insult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="10dp"
+        android:background="#90000000"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/selected_insult_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/insult_background"
+            android:includeFontPadding="false"
+            tools:text="hey there" />
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/insults_recycler_view"
         android:layout_width="0dp"

@@ -14,7 +14,6 @@
         android:layout_width="wrap_content"
         android:includeFontPadding="false"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:background="@drawable/insult_background"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="hey there" />
